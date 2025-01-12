@@ -79,6 +79,8 @@
     color: #000000;
     border-radius: 20px;
     overflow: hidden;
+    width: 250px;
+    height: 150px;
 }
 
 .playerContainer > div {
