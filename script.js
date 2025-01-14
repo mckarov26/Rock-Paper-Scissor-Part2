@@ -15,6 +15,7 @@ const buttonContainer = document.querySelector(".btn-container");
 
 //Javascript Event Delegation 
 // Assign a single event handler to handle all the click events:
+// This is a callback function to display player choice when button is clicked!
 
 buttonContainer.addEventListener("click", (event) => {
     let target = event.target;
@@ -37,6 +38,33 @@ buttonContainer.addEventListener("click", (event) => {
             playerChoice.textContent = "✌️";
             break;
     }
+
+
+    getComputerChoice();
+
+    
 });
 
+// This is a function to get the Computer Choice and display its result in random value.
 
+function getComputerChoice() {
+    let num = Math.floor((Math.random() * 3) + 1);
+
+    switch(num) {
+        case 1:
+            computerChoice.style.padding = "0";
+            computerChoice.style["font-size"] = "40px";
+            computerChoice.textContent = "✊";
+            break;
+        case 2:
+            computerChoice.style.padding = "0";
+            computerChoice.style["font-size"] = "40px";
+            computerChoice.textContent = "🫱";
+            break;
+        case 3:
+            computerChoice.style.padding = "0";
+            computerChoice.style["font-size"] = "40px";
+            computerChoice.textContent = "✌️";
+            break;
+    }
+}
