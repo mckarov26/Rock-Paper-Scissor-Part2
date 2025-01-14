@@ -39,8 +39,13 @@ buttonContainer.addEventListener("click", (event) => {
             break;
     }
 
-
+    // This will invoke the getComputerChoice after the buttons is clicked
     getComputerChoice();
+
+    // This will invoke the getWinner Function after the buttons is clicked
+    getWinner();
+    playerScore.textContent = `Player Score: ${playerNum}`;
+    computerScore.textContent = `Computer Score: ${computerNum}`;
 
     
 });
@@ -67,4 +72,46 @@ function getComputerChoice() {
             computerChoice.textContent = "✌️";
             break;
     }
+}
+
+let computerNum = 0;
+let playerNum = 0;
+
+// This function is to compare the choices between the player and the computer.
+
+function getWinner() {
+
+    
+    if (playerChoice.textContent === "✊" && computerChoice.textContent === "✊" 
+        || playerChoice.textContent === "🫱" && computerChoice.textContent === "🫱" 
+        || playerChoice.textContent === "✌️" && computerChoice.textContent === "✌️" 
+        ) {    winnerDisplay.textContent = "It's a tie!"
+            //    playerNum++;
+            //    computerNum++;
+
+     } else if (playerChoice.textContent === "✊" && computerChoice.textContent === "✌️" ) {
+        winnerDisplay.textContent = "Player Wins!";
+        playerNum++;
+
+     } else if (playerChoice.textContent === "✊" && computerChoice.textContent === "🫱") {
+        winnerDisplay.textContent = "Computer Wins!";
+        computerNum++;
+
+     } else if (playerChoice.textContent === "🫱" && computerChoice.textContent === "✊") {
+        winnerDisplay.textContent = "Player Wins!";
+        playerNum++;        
+
+     } else if (playerChoice.textContent === "🫱" && computerChoice.textContent === "✌️") {
+        winnerDisplay.textContent = "Computer Wins!";
+        computerNum++;
+
+     } else if (playerChoice.textContent === "✌️" && computerChoice.textContent === "🫱") {
+        winnerDisplay.textContent = "Player Wins!";
+        playerNum++;   
+
+     } else if (playerChoice.textContent === "✌️" && computerChoice.textContent === "✊") {
+        winnerDisplay.textContent ="Computer Wins!";
+        computerNum++;
+     }             
+
 }
