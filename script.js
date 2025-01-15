@@ -9,7 +9,7 @@ const displayRound = document.querySelector("#displayRound");
 let computerNum = 0;
 let playerNum = 0;
 let currentRound = 0;
-// I might not use this anymore insted use the Javascript Event Delegation 
+// I might not use this anymore instead use the Javascript Event Delegation 
 // const rock = document.querySelector("#rock")
 // const paper = document.querySelector("#paper")
 // const scissor = document.querySelector("#scissor")
@@ -23,6 +23,10 @@ const buttonContainer = document.querySelector(".btn-container");
 
 buttonContainer.addEventListener("click", (event) => {
  
+
+// This is to avoid the game being played or activated if I click the buttons container.
+    if (event.target.id === "rock" || event.target.id === "paper" || event.target.id === "scissor"  ){
+//////////////////////////////////////////////////////////////////////////////////////////////////////
     currentRound++;
     displayRound.textContent = `Round ${currentRound}`;
     
@@ -65,7 +69,7 @@ buttonContainer.addEventListener("click", (event) => {
         } else if (playerNum > computerNum) {
             winnerDisplay.textContent = "Player is the Champion!";
         }
-    }
+    }}
 
 
 });
