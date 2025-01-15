@@ -4,7 +4,11 @@ const playerChoice = document.querySelector("#playerChoice");
 const computerChoice = document.querySelector("#computerChoice");
 const winnerDisplay = document.querySelector("#winnerDisplay");
 
+const displayRound = document.querySelector("#displayRound");
 
+let computerNum = 0;
+let playerNum = 0;
+let currentRound = 0;
 // I might not use this anymore insted use the Javascript Event Delegation 
 // const rock = document.querySelector("#rock")
 // const paper = document.querySelector("#paper")
@@ -18,6 +22,11 @@ const buttonContainer = document.querySelector(".btn-container");
 // This is a callback function to display player choice when button is clicked!
 
 buttonContainer.addEventListener("click", (event) => {
+ 
+    currentRound++;
+    displayRound.textContent = `Round ${currentRound}`;
+    
+
     let target = event.target;
 
     switch(target.id) {
@@ -47,7 +56,18 @@ buttonContainer.addEventListener("click", (event) => {
     playerScore.textContent = `Player Score: ${playerNum}`;
     computerScore.textContent = `Computer Score: ${computerNum}`;
 
-    
+   
+    // This code will disable the buttons and display the champion!
+    if (currentRound === 5) {
+        disableButtons()
+        if (playerNum < computerNum) {
+            winnerDisplay.textContent = "Computer is the Champion!";
+        } else if (playerNum > computerNum) {
+            winnerDisplay.textContent = "Player is the Champion!";
+        }
+    }
+
+
 });
 
 // This is a function to get the Computer Choice and display its result in random value.
@@ -72,10 +92,11 @@ function getComputerChoice() {
             computerChoice.textContent = "✌️";
             break;
     }
+
+
 }
 
-let computerNum = 0;
-let playerNum = 0;
+
 
 // This function is to compare the choices between the player and the computer.
 
@@ -114,4 +135,13 @@ function getWinner() {
         computerNum++;
      }             
 
+}
+
+//Function this will disable button.
+function disableButtons() {
+    const buttons = buttonContainer.querySelectorAll("button");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
 }
